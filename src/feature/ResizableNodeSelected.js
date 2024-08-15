@@ -52,8 +52,8 @@ const EasyConnectExample = () => {
     const newNode = {
       id: (nodeCount + 1).toString(),
       type: 'custom',
-      position: { x: 30 * (nodeCount + 1), y: 30 * (nodeCount + 1) },
-      data: { label: `This is a dummy text for the node number of ${nodeCount + 1} ` }, // Add label to data
+      position: { x: 100 * (nodeCount + 1), y: 100 * (nodeCount + 1) },
+      data: { label: `Node ${nodeCount + 1}` }, // Add label to data
     };
 
     console.log('Adding node:', newNode);
@@ -65,25 +65,11 @@ const EasyConnectExample = () => {
     setNodeCount(nodeCount + 1);
   };
 
-  const deleteLastNode = () => {
-    setNodes((nds) => {
-      const updatedNodes = nds.slice(0, -1); // Remove the last node
-      console.log('Updated nodes after deletion:', updatedNodes);
-      return updatedNodes;
-    });
-    setNodeCount((count) => Math.max(count - 1, 0));
-  };
-
   return (
     <div className="react-flow-container">
-        <button onClick={addNode} className="add-node-button">
+      <button onClick={addNode} className="add-node-button">
         Add Node
       </button>
-      <button onClick={deleteLastNode} className="delete-node-button">
-        Delete Node
-      </button>
-      
-    
       <ReactFlow
         nodes={nodes}
         edges={edges}
